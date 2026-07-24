@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1784924378265",
+    "createdAt": "2026-07-24T20:19:38.265Z",
+    "draft": {
+      "selected": [],
+      "preference": "",
+      "locationChoice": "",
+      "locationText": "",
+      "date": "2026-07-27",
+      "time": "11:00",
+      "transport": "recojo",
+      "notes": "",
+      "details": {
+        "undefined": "11:00"
+      }
+    },
+    "preview": "Vale de cita para Andrea\nPlan: Sin plan seleccionado\nFecha: 2026-07-27\nHora: 11:00\nTransporte: Te recojo"
+  },
+  {
+    "id": "1784924453704",
+    "createdAt": "2026-07-24T20:20:53.704Z",
+    "draft": {
+      "selected": [],
+      "preference": "",
+      "locationChoice": "",
+      "locationText": "",
+      "date": "2026-07-28",
+      "time": "18:00",
+      "transport": "encontramos",
+      "notes": "",
+      "details": {
+        "undefined": "18:00"
+      }
+    },
+    "preview": "Vale de cita para Andrea\nPlan: Sin plan seleccionado\nFecha: 2026-07-28\nHora: 18:00\nTransporte: Nos vemos allá"
+  },
+  {
+    "id": "1784925182965",
+    "createdAt": "2026-07-24T20:33:02.965Z",
+    "draft": {
+      "selected": [],
+      "preference": "",
+      "locationChoice": "",
+      "locationText": "",
+      "date": "2026-07-27",
+      "time": "11:00",
+      "transport": "recojo",
+      "notes": "",
+      "details": {
+        "undefined": "11:00"
+      }
+    },
+    "preview": "Vale de cita para Andrea\nPlan: Sin plan seleccionado\nFecha: 2026-07-27\nHora: 11:00\nTransporte: Te recojo"
+  }
+]

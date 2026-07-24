@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vale final para Andrea</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fff6fa;
+        --card: #ffffff;
+        --rose: #d96b95;
+        --rose-deep: #b44472;
+        --ink: #4b2b3b;
+        --muted: #7f6170;
+        --line: #f2dbe6;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(217,107,149,0.16), transparent 28%),
+          linear-gradient(135deg, #fff8fb 0%, #ffeef5 100%);
+      }
+
+      .card {
+        width: min(92vw, 760px);
+        background: var(--card);
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 0 24px 70px rgba(117, 56, 90, 0.16);
+        border: 1px solid rgba(217,107,149,0.14);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(217,107,149,0.04), transparent 40%, rgba(217,107,149,0.06));
+        pointer-events: none;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #ffe3eb;
+        color: var(--rose-deep);
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+        color: var(--rose-deep);
+      }
+
+      .subtitle {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .hero {
+        padding: 18px 20px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #fff3f7, #ffe7ef);
+        border: 1px solid var(--line);
+        margin-bottom: 18px;
+      }
+
+      .hero-title {
+        margin: 0 0 8px;
+        color: var(--rose-deep);
+        font-size: 1.05rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-text {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .line {
+        display: flex;
+        gap: 10px;
+        padding: 12px 0;
+        border-bottom: 1px dashed var(--line);
+        font-size: 1.02rem;
+      }
+
+      .line:last-child { border-bottom: none; }
+
+      .label {
+        min-width: 110px;
+        font-weight: 700;
+        color: var(--rose-deep);
+      }
+
+      .value {
+        color: var(--ink);
+        line-height: 1.5;
+      }
+
+      .footer {
+        margin-top: 20px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 11px 18px;
+        background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+        color: white;
+        border: none;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        box-shadow: 0 10px 24px rgba(185, 68, 114, 0.22);
+      }
+
+      @media (max-width: 560px) {
+        .card { padding: 24px; }
+        .line { flex-direction: column; gap: 4px; }
+        .label { min-width: unset; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="badge">💐 Vale especial para Andrea</div>
+      <h1>Tu vale final</h1>
+      <p class="subtitle">Este es el plan que hemos preparado con mucho cuidado para ti.</p>
+
+      <div class="hero">
+        <p class="hero-title">✨ Detalles del plan</p>
+        <p class="hero-text" id="heroText">Cargando...</p>
+      </div>
+
+      <div id="valeContent"></div>
+
+      <div class="footer">
+        Este vale está listo para que tú lo veas, lo compartas y lo guardes como recuerdo.
+      </div>
+      <a class="btn" href="index.html">Volver a la invitación</a>
+    </div>
+
+    <script>
+      const draft = JSON.parse(sessionStorage.getItem('finalValeDraft') || '{}');
+      const content = document.getElementById('valeContent');
+      const heroText = document.getElementById('heroText');
+
+      const selectedLabels = draft.selectedLabels?.length ? draft.selectedLabels : ['Sin plan seleccionado'];
+      heroText.textContent = `Una cita especial con ${selectedLabels.join(', ')}.`;
+
+      const lines = [];
+      lines.push(`<div class="line"><span class="label">Plan</span><span class="value">${selectedLabels.join(', ')}</span></div>`);
+      if (draft.preference) lines.push(`<div class="line"><span class="label">Extra</span><span class="value">${draft.preference}</span></div>`);
+      if (draft.locationChoice) lines.push(`<div class="line"><span class="label">Lugar</span><span class="value">${draft.locationChoice.replace(/-/g, ' ')}</span></div>`);
+      if (draft.locationText) lines.push(`<div class="line"><span class="label">Ubicación</span><span class="value">${draft.locationText}</span></div>`);
+      if (draft.date) lines.push(`<div class="line"><span class="label">Fecha</span><span class="value">${draft.date}</span></div>`);
+      if (draft.time) lines.push(`<div class="line"><span class="label">Hora</span><span class="value">${draft.time}</span></div>`);
+      if (draft.transport) lines.push(`<div class="line"><span class="label">Transporte</span><span class="value">${draft.transport === 'recojo' ? 'Te recojo' : 'Nos vemos allá'}</span></div>`);
+      if (draft.notes) lines.push(`<div class="line"><span class="label">Notas</span><span class="value">${draft.notes}</span></div>`);
+
+      content.innerHTML = lines.join('');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andrea, ¿quieres una cita conmigo?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="card" id="invitationCard">
+      <div class="sparkles">✨</div>
+      <p class="eyebrow">Una invitación especial</p>
+      <div class="invitation-message">
+        <p class="eyebrow">Andrea, esta es mi carta para ti</p>
+        <h1>¿Quieres salir conmigo?</h1>
+        <p class="subtitle">
+          Quiero invitarte a una cita especial, sólo tenemos que decir "¡sí!" para empezar.
+        </p>
+      </div>
+
+      <div class="button-zone">
+        <button id="yesBtn" class="btn btn-yes">Sí, me encantaría</button>
+        <button id="noBtn" class="btn btn-no">No</button>
+      </div>
+
+      <p id="message" class="message">Haz clic en el botón que más te guste...</p>
+    </main>
+
+    <section id="plannerSection" class="planner hidden">
+      <div class="planner-card">
+        <h2>Perfecto, vamos a planear nuestra cita</h2>
+        <p>
+          Elige las ideas que más te gusten y añade detalles si quieres. Todo se guardará aquí en la misma página.
+        </p>
+
+        <div class="extra-choice">
+          <p class="extra-title">NO ES OBLIGATORIO, solo un extra</p>
+          <div class="preference-grid">
+            <button type="button" class="preference-pill" data-preference="Algo tranquilo">Algo tranquilo</button>
+            <button type="button" class="preference-pill" data-preference="Algo divertido">Algo divertido</button>
+            <button type="button" class="preference-pill" data-preference="Algo romántico">Algo romántico</button>
+            <button type="button" class="preference-pill" data-preference="Algo espontáneo">Algo espontáneo</button>
+          </div>
+        </div>
+
+        <div id="optionsGrid" class="options-grid"></div>
+
+        <div class="location-block">
+          <p class="extra-title">¿Tienes un lugar favorito?</p>
+          <div class="location-grid">
+            <label class="location-pill">
+              <input type="radio" name="locationChoice" value="tu-favorito" />
+              <span>Tu lugar favorito</span>
+            </label>
+            <label class="location-pill">
+              <input type="radio" name="locationChoice" value="decidamos-juntos" />
+              <span>Decidamos juntos</span>
+            </label>
+            <label class="location-pill">
+              <input type="radio" name="locationChoice" value="yo-lo-escojo" />
+              <span>Yo lo escojo</span>
+            </label>
+          </div>
+          <label class="field">
+            <span>Si quieres, escribe aquí el lugar</span>
+            <input id="locationText" type="text" autocomplete="off" placeholder="Nombre del lugar favorito" />
+          </label>
+        </div>
+
+        <form id="plannerForm" class="planner-form" autocomplete="off">
+          <label class="field">
+            <span>¿Qué te gustaría hacer en específico?</span>
+            <input id="freeText" type="text" autocomplete="off" placeholder="Por ejemplo: ver una película, comer tacos o dar un paseo" />
+          </label>
+
+          <label class="field">
+            <span>Algo que quieras agregar</span>
+            <textarea id="notes" autocomplete="off" rows="4" placeholder="Un lugar, una canción, una comida favorita, o cualquier detalle bonito"></textarea>
+          </label>
+
+          <button type="submit" class="btn btn-yes full">Guardar mi plan</button>
+        </form>
+
+        <div id="savedSummary" class="saved-summary"></div>
+        <button id="continueToDate" type="button" class="btn btn-yes full hidden">Continuar a fecha y transporte</button>
+      </div>
+    </section>
+
+    <section id="dateSection" class="planner hidden">
+      <div class="planner-card">
+        <h2>Elige el día y la hora</h2>
+        <p class="section-note">
+          Elige el día y la hora que más te acomoden para nuestra cita.
+        </p>
+
+        <form id="dateForm" class="planner-form">
+          <label class="field">
+            <span>Selecciona el día</span>
+            <input id="dateInput" type="date" />
+          </label>
+
+          <label class="field">
+            <span>Selecciona la hora de llegada</span>
+            <select id="timeSelect" class="option-detail-input"></select>
+          </label>
+
+          <button type="submit" class="btn btn-yes full">Confirmar fecha</button>
+        </form>
+
+        <div id="dateSummary" class="saved-summary"></div>
+      </div>
+    </section>
+
+    <section id="transportSection" class="planner hidden">
+      <div class="planner-card">
+        <h2>¿Cómo quieres que llegue?</h2>
+        <p class="section-note small">
+          Como es la primera vez que nos veamos, por eso pregunto.
+        </p>
+
+        <div class="transport-options">
+          <label class="transport-card">
+            <input type="radio" name="transport" value="recojo" />
+            <span class="transport-title">Que te recoja</span>
+            <span class="transport-detail">Voy por ti y vamos juntos al lugar.</span>
+          </label>
+
+          <label class="transport-card">
+            <input type="radio" name="transport" value="encontramos" />
+            <span class="transport-title">Nos vemos allá</span>
+            <span class="transport-detail">Nos vemos directamente en el lugar de la cita.</span>
+          </label>
+        </div>
+
+        <div id="transportSummary" class="saved-summary"></div>
+
+        <div id="reviewSection" class="review-block hidden">
+          <p class="review-title">¿Todo correcto?</p>
+          <p class="review-text">
+            Revisa tus elecciones y confirma antes de ver tu vale especial.
+          </p>
+          <button id="reviewBtn" type="button" class="btn btn-yes full">Ver mi vale</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="voucherSection" class="planner hidden">
+      <div class="planner-card voucher-card">
+        <h2 class="voucher-title">Tu vale de cita <span class="voucher-flowers">💐</span></h2>
+        <p class="section-note">
+          Esto es lo que quedaría reservado para nuestra cita.
+        </p>
+        <div id="voucherContent" class="voucher-content"></div>
+        <div class="voucher-badge">✨ Válido por 1 cita e inolvidable ✨</div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
